@@ -38,7 +38,7 @@ const DefinitionList = (props: props) => {
             onClick={() => {
               search.setText(getSynonyms()[0]);
               search.getEntries(getSynonyms()[0]);
-              navigate(`/${getSynonyms()[0]}`);
+              navigate(`/word/${getSynonyms()[0]}`);
             }}
           >
             {getSynonyms()[0]}

@@ -16,6 +16,7 @@ const DictTitle = () => {
         <h1 className="word">{entries?.word}</h1>
         <div className="phonetic-text">{entries?.phonetic}</div>
       </div>
+      <button className="favs-button">Add to favourites</button>
       <button className="play-button" onClick={playAudio}>
         <img className="img-play-icon" src={imgPlayUrl} alt="play button" />
       </button>

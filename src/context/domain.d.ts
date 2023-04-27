@@ -22,3 +22,9 @@ export interface Entry {
   sourceUrls: string[];
   meanings: Meaning[];
 }
+
+declare global {
+  interface Window {
+    _env_: any;
+  }
+}

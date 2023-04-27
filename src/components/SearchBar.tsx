@@ -30,7 +30,7 @@ const SearchBar = () => {
         onClick={() => {
           setText(searchedText);
           getEntries(searchedText);
-          navigate(`/${searchedText}`);
+          navigate(`/word/${searchedText}`);
         }}
       >
         <svg

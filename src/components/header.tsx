@@ -3,6 +3,7 @@ import arrowImgUrl from "../assets/images/icon-arrow-down.svg";
 import moonImg from "../assets/images/icon-moon.svg";
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const body = document.querySelector("body");
@@ -46,6 +47,7 @@ const Header = () => {
   }
 
   const [theme, setTheme] = useState("light");
+  const navigate = useNavigate();
   const toggleTheme = () => {
     if (theme === "light") {
       body!.dataset.theme = "dark";
@@ -62,7 +64,16 @@ const Header = () => {
   }, [theme]);
   return (
     <header className="header">
-      <img src={logo}></img>
+      <img
+        className="logo"
+        src={logo}
+        onClick={() => {
+          navigate("/");
+        }}
+      ></img>
+
+      <button className="favs-button">Favourites</button>
+
       <div className="spacer"></div>
       <button className="btn-font-select" onClick={handleClick}>
         {displayName()}
