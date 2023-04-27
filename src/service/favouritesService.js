@@ -14,10 +14,14 @@ export function getCurrentDate(separator = "-") {
   let date = newDate.getDate();
   let month = newDate.getMonth() + 1;
   let year = newDate.getFullYear();
+  let hour = newDate.getHours().toString(2);
+  let minute = newDate.getMinutes();
 
   return `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
-  }${separator}${date}`;
+  }${separator}${date}, ${hour < 10 ? `0${hour}` : `${hour}`}:${
+    minute < 10 ? `0${minute}` : `${minute}`
+  }`;
 }
 
 export const addFav = async (word) => {

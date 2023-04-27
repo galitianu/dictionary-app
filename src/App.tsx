@@ -6,10 +6,15 @@ import Main from "./components/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageLoader from "./components/PageLoader";
 import Favourites from "./components/Favourites";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <div>
+      <Helmet>
+        <title>Dictionary</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <SearchProvider>
         <div></div>
         <BrowserRouter>
