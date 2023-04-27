@@ -1,0 +1,364 @@
+:root {
+  --black: hsl(0, 0%, 2%);
+  --almost-black: hsl(0, 0%, 12%);
+  --grey-black: hsl(0, 0%, 18%);
+  --almost-grey: hsl(0, 0%, 23%);
+  --grey: hsl(0, 0%, 51%);
+  --light-grey: hsl(0, 0%, 91%);
+  --lighter-grey: rgb(244, 244, 244);
+  --white: hsl(0, 0%, 100%);
+  --purple: hsl(274, 82%, 60%);
+  --red: hsl(0, 100%, 66%);
+  --ff-serif: Lora, serif;
+  --ff-sans: Inter, sans-serif;
+  --ff-mono: Inconsolata, monospace;
+
+}
+
+body[data-theme='light'] {
+  --primary-color: var(--white);
+  --main-text-color: var(--black);
+  --accent-color: var(--purple);
+  --element-color: var(--lighter-grey);
+  --element-color-2: var(--light-grey);
+  --slider-color: var(--grey);
+}
+
+body[data-theme='dark'] {
+  --primary-color: var(--black);
+  --main-text-color: var(--white);
+  --accent-color: var(--purple);
+  --element-color: var(--almost-grey);
+  --element-color-2: var(--almost-black);
+  --slider-color: var(--purple);
+
+}
+
+.App {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+
+}
+
+body[data-font="serif"] {
+  font-family: var(--ff-serif);
+}
+
+body[data-font="sans"] {
+  font-family: var(--ff-sans);
+}
+
+body[data-font="mono"] {
+  font-family: var(--ff-mono);
+}
+
+body {
+  background-color: var(--primary-color);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header {
+  margin: 1.5rem 0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spacer {
+  flex-grow: 2;
+}
+
+.btn-font-select {
+  border: none;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+  padding-right: 1.625rem;
+  height: 2rem;
+  border-right: 1px solid var(--light-grey);
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--main-text-color);
+  font-size: 1.125rem;
+  font-family: inherit;
+}
+
+.search-bar {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--element-color);
+  align-items: center;
+  color: var(--grey);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+}
+
+.search-text-box {
+  border: none;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: inherit;
+  color: var(--main-text-color);
+  background-color: var(--element-color);
+}
+
+.search-text-box:focus,
+input:focus {
+  outline: none;
+}
+
+.submit-button {
+  margin-left: 1rem;
+  border: none;
+  background: none;
+  outline: none;
+  outline-style: none;
+  cursor: pointer;
+  align-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+.fontSelectModal {
+  list-style-type: none;
+  position: absolute;
+  top: 3rem;
+  right: 8rem;
+  background-color: var(--element-color-2);
+  color: var(--main-text-color);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  width: 7rem;
+  flex-direction: column;
+  text-align: left;
+}
+
+.toggle-container {
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.toggle-container input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  background-color: var(--slider-color);
+  transition: 0.4s;
+  pointer-events: none;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--white);
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.slider::after {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  left: 2px;
+  bottom: 2px;
+  transition: 0.2s;
+  pointer-events: none;
+  color: var(--white);
+}
+
+input:checked+.slider {
+  background-color: var(--slider-color);
+
+}
+
+input:checked+.slider:before {
+  transform: translateX(20px);
+}
+
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.fontOptionSans {
+  font-family: var(--ff-sans);
+}
+
+.fontOptionSerif {
+  font-family: var(--ff-serif);
+}
+
+.fontOptionMono {
+  font-family: var(--ff-mono);
+}
+
+.word {
+  margin: 0rem;
+  color: var(--main-text-color);
+}
+
+.title-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phonetic-text {
+  margin-top: 0.5rem;
+  font-weight: lighter;
+  font-family: var(--ff-sans);
+  color: var(--purple);
+}
+
+.play-button {
+  border: none;
+  background: none;
+}
+
+.img-play-icon {
+  height: 3rem;
+}
+
+.pos-meaning {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.meaning-keyword {
+  color: var(--grey);
+  font-weight: 100;
+  margin-bottom: 1rem;
+}
+
+.meaning-list {
+  padding-left: 0px;
+}
+
+.meaning-pos {
+  font-style: italic;
+  font-weight: bolder;
+  color: var(--main-text-color);
+
+}
+
+.horizontal-line {
+  margin-left: 1rem;
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-grey);
+}
+
+.horizontal-line-2 {
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-grey);
+}
+
+.definition-list {
+  padding-left: 1rem;
+
+}
+
+.definition-element {
+  margin-top: 1rem;
+  color: var(--main-text-color);
+
+}
+
+ul {
+  list-style: none;
+  /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";
+  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--purple);
+  /* Change the color */
+  font-weight: bold;
+  /* If you want it to be bold */
+  display: inline-block;
+  /* Needed to add space between the bullet and the text */
+  width: 1rem;
+  /* Also needed for space (tweak if needed) */
+  margin-left: -1em;
+  /* Also needed for space (tweak if needed) */
+}
+
+.synonym-container {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.synonym-keyword {
+  color: var(--grey);
+}
+
+.synonym-link {
+  margin-left: 1.5rem;
+  font-weight: bold;
+  color: var(--purple);
+  cursor: pointer;
+  user-select: none;
+}
+
+.source-container {
+  margin-top: 2rem;
+}
+
+.source-keyword {
+  margin-top: 1.5rem;
+  color: var(--grey);
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+}
+
+.source-url {
+  color: var(--main-text-color);
+  padding-bottom: 6rem;
+}
+
+.new-window-img {
+  margin-left: 0.5rem;
+}
