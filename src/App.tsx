@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header></Header>
       <SearchProvider>
-        <SearchBar></SearchBar>
+        <SearchBar />
         <Main />
       </SearchProvider>
     </div>
