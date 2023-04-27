@@ -8,14 +8,20 @@ import {
   useState,
 } from "react";
 import { Entry } from "./domain";
+import { fetchEntries } from "../api/publicAPI";
 
 const useSearchContext = () => {
   const [text, setText] = useState("");
+  const [searchedText, setSearchedText] = useState("");
+
   const [entries, setEntries] = useState<Entry>();
   const [error, setError] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const getEntries = async (text: string) => {
+    setError(false);
+    setNotFound(false);
     setLoading(true);
     try {
       const fetchedEntries = await fetchEntries(text);
@@ -27,15 +33,16 @@ const useSearchContext = () => {
         phonetics: fetchedEntries[0].phonetics,
       };
       setEntries(dto);
-    } catch {
-      setError(true);
+    } catch (err: any) {
+      if (err.response.status === 404) setNotFound(true);
+      else setError(true);
     } finally {
       setLoading(false);
     }
   };
 
   const handleTextInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    setSearchedText(e.target.value);
   }, []);
 
   const handleSearchButtonClick = () => {
@@ -43,6 +50,8 @@ const useSearchContext = () => {
   };
 
   return {
+    searchedText,
+    setSearchedText,
     text,
     setText,
     handleTextInput,
@@ -51,16 +60,8 @@ const useSearchContext = () => {
     loading,
     error,
     entries,
+    notFound,
   };
-};
-
-const fetchEntries = async (text: string): Promise<Entry[]> => {
-  const res = await fetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${text}`
-  );
-  const data = await res.json();
-
-  return data;
 };
 
 type UseCounterContextType = ReturnType<typeof useSearchContext>;
@@ -72,8 +73,11 @@ const initContextState: UseCounterContextType = {
   handleSearchButtonClick: () => {},
   getEntries: async (text: string) => {},
   error: false,
+  notFound: false,
   loading: false,
   entries: undefined,
+  searchedText: "",
+  setSearchedText: () => {},
 };
 
 export const SearchContext =
@@ -102,6 +106,10 @@ type useSearchHookType = {
   entries: Entry | undefined;
   error: boolean;
   loading: boolean;
+  notFound: boolean;
+  getEntries: (word: string) => {};
+  searchedText: string;
+  setSearchedText: any;
 };
 
 export const useSearch = (): useSearchHookType => {
@@ -113,6 +121,10 @@ export const useSearch = (): useSearchHookType => {
     error,
     loading,
     entries,
+    notFound,
+    getEntries,
+    searchedText,
+    setSearchedText,
   } = useContext(SearchContext);
   return {
     text,
@@ -122,5 +134,9 @@ export const useSearch = (): useSearchHookType => {
     error,
     loading,
     entries,
+    notFound,
+    getEntries,
+    searchedText,
+    setSearchedText,
   };
 };

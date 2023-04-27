@@ -34,7 +34,7 @@ const DefinitionList = (props: props) => {
             className="synonym-link"
             onClick={() => {
               search.setText(getSynonyms()[0]);
-              search.handleSearchButtonClick();
+              search.getEntries(getSynonyms()[0]);
             }}
           >
             {getSynonyms()[0]}

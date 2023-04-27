@@ -1,7 +1,19 @@
+import { useEffect } from "react";
 import { useSearch } from "../context/SearchContext";
 
 const SearchBar = () => {
-  const { handleTextInput, handleSearchButtonClick } = useSearch();
+  const {
+    handleTextInput,
+    handleSearchButtonClick,
+    text,
+    setText,
+    searchedText,
+    getEntries,
+  } = useSearch();
+
+  // useEffect(() => {
+  //   console.log(text, searchedText);
+  // }, [text, searchedText]);
 
   return (
     <div className="search-bar">
@@ -18,7 +30,10 @@ const SearchBar = () => {
         id="searchQuerySubmit"
         type="submit"
         name="searchQuerySubmit"
-        onClick={handleSearchButtonClick}
+        onClick={() => {
+          setText(searchedText);
+          getEntries(searchedText);
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
