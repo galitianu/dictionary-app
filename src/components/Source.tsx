@@ -2,8 +2,7 @@ import { useSearch } from "../context/SearchContext";
 import newWindow from "../assets/images/icon-new-window.svg";
 
 const Source = () => {
-  const { entries, text, handleTextInput, handleSearchButtonClick } =
-    useSearch();
+  const { entries } = useSearch();
   return (
     <div className="source-container">
       <div className="horizontal-line-2"></div>

@@ -5,15 +5,17 @@ const Main = () => {
   const { loading, error, entries, notFound } = useSearch();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="information">Loading...</div>;
   }
 
   if (error) {
-    return <div>Something went wrong!</div>;
+    return <div className="error">Something went wrong!</div>;
   }
 
   if (notFound) {
-    return <div>This word cannot be found in the dictionary!</div>;
+    return (
+      <div className="error">This word cannot be found in the dictionary!</div>
+    );
   }
   if (entries === undefined) return <div></div>;
 

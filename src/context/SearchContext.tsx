@@ -45,17 +45,12 @@ const useSearchContext = () => {
     setSearchedText(e.target.value);
   }, []);
 
-  const handleSearchButtonClick = () => {
-    getEntries(text);
-  };
-
   return {
     searchedText,
     setSearchedText,
     text,
     setText,
     handleTextInput,
-    handleSearchButtonClick,
     getEntries,
     loading,
     error,
@@ -70,7 +65,6 @@ const initContextState: UseCounterContextType = {
   text: "",
   setText: () => {},
   handleTextInput: (e: ChangeEvent<HTMLInputElement>) => {},
-  handleSearchButtonClick: () => {},
   getEntries: async (text: string) => {},
   error: false,
   notFound: false,
@@ -102,7 +96,6 @@ type useSearchHookType = {
   text: string;
   setText: any;
   handleTextInput: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSearchButtonClick: () => void;
   entries: Entry | undefined;
   error: boolean;
   loading: boolean;
@@ -117,7 +110,6 @@ export const useSearch = (): useSearchHookType => {
     text,
     setText,
     handleTextInput,
-    handleSearchButtonClick,
     error,
     loading,
     entries,
@@ -130,7 +122,6 @@ export const useSearch = (): useSearchHookType => {
     text,
     setText,
     handleTextInput,
-    handleSearchButtonClick,
     error,
     loading,
     entries,

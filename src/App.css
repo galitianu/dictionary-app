@@ -9,6 +9,7 @@
   --white: hsl(0, 0%, 100%);
   --purple: hsl(274, 82%, 60%);
   --red: hsl(0, 100%, 66%);
+
   --ff-serif: Lora, serif;
   --ff-sans: Inter, sans-serif;
   --ff-mono: Inconsolata, monospace;
@@ -22,6 +23,7 @@ body[data-theme='light'] {
   --element-color: var(--lighter-grey);
   --element-color-2: var(--light-grey);
   --slider-color: var(--grey);
+  --subtle-red: hsl(0, 100%, 60%);
 }
 
 body[data-theme='dark'] {
@@ -31,7 +33,7 @@ body[data-theme='dark'] {
   --element-color: var(--almost-grey);
   --element-color-2: var(--almost-black);
   --slider-color: var(--purple);
-
+  --subtle-red: hsl(0, 100%, 30%);
 }
 
 .App {
@@ -361,4 +363,20 @@ ul li::before {
 
 .new-window-img {
   margin-left: 0.5rem;
+}
+
+.information {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: var(--grey);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.error {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: var(--subtle-red);
+  padding: 1rem;
+  border-radius: 1rem;
 }

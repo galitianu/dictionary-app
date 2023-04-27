@@ -1,19 +1,16 @@
 import { useEffect } from "react";
 import { useSearch } from "../context/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const {
-    handleTextInput,
-    handleSearchButtonClick,
-    text,
-    setText,
-    searchedText,
-    getEntries,
-  } = useSearch();
+  const { handleTextInput, text, setText, searchedText, getEntries } =
+    useSearch();
 
-  // useEffect(() => {
-  //   console.log(text, searchedText);
-  // }, [text, searchedText]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(text, searchedText);
+  }, [text, searchedText]);
 
   return (
     <div className="search-bar">
@@ -33,6 +30,7 @@ const SearchBar = () => {
         onClick={() => {
           setText(searchedText);
           getEntries(searchedText);
+          navigate(`/${searchedText}`);
         }}
       >
         <svg

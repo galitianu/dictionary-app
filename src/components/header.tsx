@@ -47,8 +47,6 @@ const Header = () => {
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => {
-    console.log(theme);
-
     if (theme === "light") {
       body!.dataset.theme = "dark";
       sessionStorage.setItem("theme", "dark");

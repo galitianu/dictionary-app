@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useSearch } from "../context/SearchContext";
 import { Meaning } from "../context/domain";
 import DefinitionItem from "./DefinitionItem";
@@ -9,6 +10,8 @@ interface props {
 const DefinitionList = (props: props) => {
   let a: string[] = [];
   const search = useSearch();
+  const navigate = useNavigate();
+
   const getSynonyms = () => {
     props.meaning.definitions.forEach((b) => {
       a = a.concat(b.synonyms);
@@ -35,6 +38,7 @@ const DefinitionList = (props: props) => {
             onClick={() => {
               search.setText(getSynonyms()[0]);
               search.getEntries(getSynonyms()[0]);
+              navigate(`/${getSynonyms()[0]}`);
             }}
           >
             {getSynonyms()[0]}

@@ -2,8 +2,7 @@ import { useSearch } from "../context/SearchContext";
 import imgPlayUrl from "../assets/images/icon-play.svg";
 
 const DictTitle = () => {
-  const { entries, text, handleTextInput, handleSearchButtonClick } =
-    useSearch();
+  const { entries, text, handleTextInput } = useSearch();
 
   const playAudio = () => {
     const audio = new Audio(entries?.phonetics[0]?.audio);
