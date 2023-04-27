@@ -23,6 +23,12 @@ export interface Entry {
   meanings: Meaning[];
 }
 
+export interface Favourite {
+  id: string;
+  word: string;
+  dateAdded: string;
+}
+
 declare global {
   interface Window {
     _env_: any;

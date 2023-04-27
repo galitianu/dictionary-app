@@ -6,14 +6,8 @@ import Main from "./components/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageLoader from "./components/PageLoader";
 import Favourites from "./components/Favourites";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/firestore";
-import { config } from "./config";
 
 function App() {
-  firebase.initializeApp(config.firebase);
-
   return (
     <div>
       <SearchProvider>

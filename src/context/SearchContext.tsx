@@ -7,13 +7,13 @@ import {
   useContext,
   useState,
 } from "react";
-import { Entry } from "./domain";
+import { Entry, Favourite } from "./domain";
 import { fetchEntries } from "../api/publicAPI";
 
 const useSearchContext = () => {
   const [text, setText] = useState("");
   const [searchedText, setSearchedText] = useState("");
-
+  const [favs, setFavs] = useState([]);
   const [entries, setEntries] = useState<Entry>();
   const [error, setError] = useState(false);
   const [notFound, setNotFound] = useState(false);
@@ -56,6 +56,8 @@ const useSearchContext = () => {
     error,
     entries,
     notFound,
+    favs,
+    setFavs,
   };
 };
 
@@ -72,6 +74,8 @@ const initContextState: UseCounterContextType = {
   entries: undefined,
   searchedText: "",
   setSearchedText: () => {},
+  favs: [],
+  setFavs: () => {},
 };
 
 export const SearchContext =
@@ -103,6 +107,8 @@ type useSearchHookType = {
   getEntries: (word: string) => {};
   searchedText: string;
   setSearchedText: any;
+  favs: Favourite[];
+  setFavs: any;
 };
 
 export const useSearch = (): useSearchHookType => {
@@ -117,6 +123,8 @@ export const useSearch = (): useSearchHookType => {
     getEntries,
     searchedText,
     setSearchedText,
+    setFavs,
+    favs,
   } = useContext(SearchContext);
   return {
     text,
@@ -129,5 +137,7 @@ export const useSearch = (): useSearchHookType => {
     getEntries,
     searchedText,
     setSearchedText,
+    setFavs,
+    favs,
   };
 };

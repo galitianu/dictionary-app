@@ -8,9 +8,9 @@ const SearchBar = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(text, searchedText);
-  }, [text, searchedText]);
+  // useEffect(() => {
+  //   console.log(text, searchedText);
+  // }, [text, searchedText]);
 
   return (
     <div className="search-bar">

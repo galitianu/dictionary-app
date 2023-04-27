@@ -4,6 +4,7 @@ import moonImg from "../assets/images/icon-moon.svg";
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { getFavourites } from "../service/favouritesService";
 
 const Header = () => {
   const body = document.querySelector("body");
@@ -72,7 +73,14 @@ const Header = () => {
         }}
       ></img>
 
-      <button className="favs-button">Favourites</button>
+      <button
+        className="favs-button"
+        onClick={() => {
+          navigate("/favs");
+        }}
+      >
+        Favourites
+      </button>
 
       <div className="spacer"></div>
       <button className="btn-font-select" onClick={handleClick}>
